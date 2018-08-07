@@ -1,0 +1,38 @@
+  local assetHelper = asset.require("util/asset_helper")
+  --local transforms = asset.require('scene/solarsystem/sun/transforms')
+  local transforms = asset.require('scene/solarsystem/planets/earth/transforms')
+
+  asset.require("spice/base")
+
+local ConstellationImage = {
+    Identifier = "ConstellationImage",
+    Parent = transforms.EarthInertial.Identifier,
+    Transform = {
+    Rotation = {
+        Type = "StaticRotation",
+        Rotation = {0,0,-1.571}
+    },
+        Translation = {
+            Type = "StaticTranslation",
+            Position = {1.5673738616570048E18, 5.849518886159375E18, 5.29819760163014E17}
+        }
+
+    },
+    Renderable = {
+        Enabled = true,
+        Type = "RenderablePlaneImageLocal",
+        Size = 1.0E18,
+        Origin = "Center",
+        Billboard = false,
+        Texture = "/Users/ccnyplanetarium/experimental/OpenSpace/sync/http/constellation_textures/1/orion.png",
+        BlendMode = "Additive"
+    },
+    GUI = {
+        Name = "Orion Image",
+        Path = "/Milky Way/ConstellationImage"
+    }
+}
+
+
+
+assetHelper.registerSceneGraphNodesAndExport(asset, { ConstellationImage })
